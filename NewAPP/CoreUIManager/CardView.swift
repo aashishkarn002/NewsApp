@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MaterialComponents.MDCCard
 @IBDesignable
 class CardView: UIView {
 
@@ -30,3 +31,59 @@ class CardView: UIView {
     }
 
 }
+@IBDesignable class CircularBorderCard: MDCCard {
+    
+    @IBInspectable var borderColor: UIColor = .clear {
+        didSet {
+            self.layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 0.0 {
+        didSet {
+            self.layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var isCircular: Bool = false {
+        didSet {
+            self.layer.cornerRadius = self.frame.height / 2
+        }
+    }
+    
+    @IBInspectable var cornerRadiusT: CGFloat = 0.0 {
+        didSet {
+            self.layer.cornerRadius = cornerRadiusT
+        }
+    }
+    
+    @IBInspectable var enableShadowElevation: Bool = false {
+        didSet {
+            if !enableShadowElevation {
+                self.setShadowElevation(ShadowElevation(rawValue: 0.0), for: .normal)
+                self.setShadowElevation(ShadowElevation(rawValue: 0.0), for: .highlighted)
+            }
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configure()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configure()
+    }
+    
+    func configure() {
+        
+        self.inkView.inkColor = #colorLiteral(red: 0.7971922589, green: 0.7971922589, blue: 0.7971922589, alpha: 0.1930918236)
+    }
+}
+

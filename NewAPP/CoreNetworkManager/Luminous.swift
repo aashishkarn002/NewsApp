@@ -174,34 +174,19 @@ public struct Luminous {
             public static var name: String? {
                 
                 let netInfo = CTTelephonyNetworkInfo()
-                if let carrier = netInfo.subscriberCellularProvider {
-                    return carrier.carrierName
+                if let carrier = netInfo.serviceSubscriberCellularProviders {
+                    return carrier.description
+                    
                 }
                 
                 return nil
             }
             
             /// The carrier ISO code or nil if not available
-            public static var ISOCountryCode: String? {
-                
-                let netInfo = CTTelephonyNetworkInfo()
-                if let carrier = netInfo.subscriberCellularProvider {
-                    return carrier.isoCountryCode
-                }
-                
-                return nil
-            }
+           
             
             /// The carrier mobile country code or nil if not available
-            public static var mobileCountryCode: String? {
-                
-                let netInfo = CTTelephonyNetworkInfo()
-                if let carrier = netInfo.subscriberCellularProvider {
-                    return carrier.mobileCountryCode
-                }
-                
-                return nil
-            }
+           
             
             /// The carrier network country code or nil if not available
             @available(*, deprecated, message: "Use mobileNetworkCode instead")
@@ -216,26 +201,10 @@ public struct Luminous {
             }
             
             /// The carrier network country code or nil if not available
-            public static var mobileNetworkCode: String? {
-                
-                let netInfo = CTTelephonyNetworkInfo()
-                if let carrier = netInfo.subscriberCellularProvider {
-                    return carrier.mobileNetworkCode
-                }
-                
-                return nil
-            }
+           
             
             /// Check if the carrier allows VOIP
-            public static var allowsVOIP: Bool? {
-                
-                let netInfo = CTTelephonyNetworkInfo()
-                if let carrier = netInfo.subscriberCellularProvider {
-                    return carrier.allowsVOIP
-                }
-                
-                return nil
-            }
+            
         }
         
         
@@ -568,6 +537,8 @@ public struct Luminous {
                     return LMBatteryState.charging
                 case .full:
                     return LMBatteryState.full
+                @unknown default:
+                    fatalError()
                 }
             }
         }

@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-NewsAPP-NewsAPPUITests/Pods-NewsAPP-NewsAPPUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework
+${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework

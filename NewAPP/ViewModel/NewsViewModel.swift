@@ -7,30 +7,32 @@
 //
 
 import Foundation
-class NewsListViewModel
-{
-    private var apiClient:APIClient!
-    init(apiClient: APIClient) {
-        self.apiClient = apiClient
+struct NewsViewModel {
+    
+    let author: String?
+    let title: String?
+    let articleDescription: String?
+    let url: String?
+    let urlToImage: String?
+    let publishedAt: String?
+    let content: String?
+    let source: Source?
+    
+    private let data: Article
+    
+    init(from rp: Article) {
+        self.data = rp
+        self.author = rp.author ?? ""
+        self.title = rp.title
+        self.articleDescription = rp.articleDescription ?? ""
+        self.url = rp.url ?? ""
+        self.urlToImage = rp.urlToImage ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFc_0xCXZmKFNoEY2bSPtX7jNKrGWXKbx-Bw&usqp=CAU"
+        self.publishedAt = rp.publishedAt?.formatAPIDateTimeString("dd MMM,yyyy") ?? ""
+        self.content = rp.content ?? ""
+        self.source = rp.source
     }
-   
-}
-extension NewsListViewModel {
-     func callNews(completion: @escaping ResultCallback<[Article]>) {
-           self.apiClient.send(path: WebService.newsURL) { (result) in
-               switch result {
-               case .success(let data):
-               
-                   guard let response = try? data.decode(to: NewsResponse.self) else {
-                       completion(.failure(APIError.decoding))
-                       return
-                   }
-                completion(.success(response.articles ?? []))
-                   
-               case .failure(let error):
-                   completion(.failure(error))
-                   
-               }
-           }
-       }
+    
+    func getRP() -> Article {
+        return data
+    }
 }

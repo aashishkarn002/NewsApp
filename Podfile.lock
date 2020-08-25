@@ -1,16 +1,61 @@
 PODS:
   - Alamofire (5.2.2)
+  - MaterialComponents/AnimationTiming (113.1.0)
+  - MaterialComponents/Availability (113.1.0)
+  - MaterialComponents/Cards (113.1.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
+  - MaterialComponents/Elevation (113.1.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (113.1.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Color (113.1.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Icons/Base (113.1.0)
+  - MaterialComponents/private/Icons/ic_check_circle (113.1.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Math (113.1.0)
+  - MaterialComponents/Ripple (113.1.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (113.1.0)
+  - MaterialComponents/ShadowLayer (113.1.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (113.1.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - MaterialComponents/Cards
+  - NVActivityIndicatorView (~> 4.7)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - MaterialComponents
+    - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  MaterialComponents: 2dd68a6e240ec31c37a4559f176b7bcfe31ef92c
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
 
-PODFILE CHECKSUM: 12f1569cf393bf746f1f70c01c09ff6f37a7c01e
+PODFILE CHECKSUM: 4e2248266d22d2e7fc66d14a0ed5cd1d193df61b
 
 COCOAPODS: 1.9.3
