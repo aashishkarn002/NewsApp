@@ -8,6 +8,12 @@
 
 import Foundation
 enum NewsCellTypes: String {
-case HeadlineCell = "HeadlineCell"
+    case HeadlineCell = "HeadlineCell"
     case SubHeadlineCell = "SubHeadlineCell"
+    case NewsDetailHeadlineCell = "NewsDetailHeadlineCell"
+    case NewsDetailSourceCell = "NewsDetailSourceCell"
+    case NewsDetailSourceAndDateCell = "NewsDetailSourceAndDateCell"
+    case NewsDetailImageCell = "NewsDetailImageCell"
+    case NewsDetailDescriptionCell = "NewsDetailDescriptionCell"
+    case NewsDetailContentCell = "NewsDetailContentCell"
 }

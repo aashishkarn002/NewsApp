@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ahH-Dg-2Tw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8D4-Pz-mkg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -25,17 +25,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Briefing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpm-H1-gQX">
-                                <rect key="frame" x="12" y="93" width="390" height="28"/>
+                                <rect key="frame" x="12" y="93" width="390" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-mY-jLj">
-                                <rect key="frame" x="0.0" y="154" width="414" height="708"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-mY-jLj">
+                                <rect key="frame" x="0.0" y="155.5" width="414" height="706.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="KMd-WO-T96">
-                                <rect key="frame" x="382" y="129" width="20" height="20"/>
+                                <rect key="frame" x="382" y="130.5" width="20" height="20"/>
                                 <color key="tintColor" name="col_app"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6fE-cg-R3t"/>
@@ -43,7 +43,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-09-09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErV-Zv-Y5Z">
-                                <rect key="frame" x="311" y="132" width="63" height="14"/>
+                                <rect key="frame" x="304.5" y="133" width="69.5" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" name="col_medium_black"/>
                                 <nil key="highlightedColor"/>
@@ -81,42 +81,133 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="99.776785714285708"/>
+            <point key="canvasLocation" x="1952.1739130434785" y="99.776785714285708"/>
+        </scene>
+        <!--News Detail View Controller-->
+        <scene sceneID="dFz-uP-4H7">
+            <objects>
+                <viewController restorationIdentifier="NewsDetailViewController" storyboardIdentifier="NewsDetailViewController" id="UvB-5W-Tf8" customClass="NewsDetailViewController" customModule="NewsAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q7S-nt-uM1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Snk-HF-1vt">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lce-3z-Phb" customClass="CircularBorderCard" customModule="NewsAPP" customModuleProvider="target">
+                                <rect key="frame" x="344" y="792" width="60" height="60"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="url" translatesAutoresizingMaskIntoConstraints="NO" id="DPv-zK-57H">
+                                        <rect key="frame" x="20" y="20" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="3Ev-3H-1ir"/>
+                                            <constraint firstAttribute="height" constant="20" id="nlw-Hr-cw4"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="col_orange"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="C62-Mi-Brc"/>
+                                    <constraint firstItem="DPv-zK-57H" firstAttribute="centerX" secondItem="Lce-3z-Phb" secondAttribute="centerX" id="N8c-ho-nOP"/>
+                                    <constraint firstAttribute="height" constant="60" id="UDM-LW-uV4"/>
+                                    <constraint firstItem="DPv-zK-57H" firstAttribute="centerY" secondItem="Lce-3z-Phb" secondAttribute="centerY" id="ZNx-jv-7cf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCircular" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusT">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interactable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hMV-2r-19S" firstAttribute="trailing" secondItem="Snk-HF-1vt" secondAttribute="trailing" id="0go-eF-hyb"/>
+                            <constraint firstItem="hMV-2r-19S" firstAttribute="bottom" secondItem="Snk-HF-1vt" secondAttribute="bottom" id="AP8-bJ-jcb"/>
+                            <constraint firstItem="hMV-2r-19S" firstAttribute="bottom" secondItem="Lce-3z-Phb" secondAttribute="bottom" constant="10" id="Q1A-D7-5bg"/>
+                            <constraint firstItem="Snk-HF-1vt" firstAttribute="top" secondItem="hMV-2r-19S" secondAttribute="top" id="RRZ-gu-yRL"/>
+                            <constraint firstItem="hMV-2r-19S" firstAttribute="trailing" secondItem="Lce-3z-Phb" secondAttribute="trailing" constant="10" id="lcf-5f-n7W"/>
+                            <constraint firstItem="Snk-HF-1vt" firstAttribute="leading" secondItem="hMV-2r-19S" secondAttribute="leading" id="yfY-Nc-GFl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hMV-2r-19S"/>
+                    </view>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="kna-eZ-p8b"/>
+                    <connections>
+                        <outlet property="linkView" destination="Lce-3z-Phb" id="W2o-xo-eEk"/>
+                        <outlet property="tableView" destination="Snk-HF-1vt" id="ZZb-rp-vAa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DF0-ij-vWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2815.9420289855075" y="99.776785714285708"/>
+        </scene>
+        <!--Full Coverage Web View Controller-->
+        <scene sceneID="S8u-RM-PRC">
+            <objects>
+                <viewController storyboardIdentifier="FullCoverageWebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aBT-sz-hp0" customClass="FullCoverageWebViewController" customModule="NewsAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kzC-kt-xZP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPm-DQ-yml">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="767-OZ-XIh" firstAttribute="trailing" secondItem="LPm-DQ-yml" secondAttribute="trailing" id="ODM-KD-NJy"/>
+                            <constraint firstItem="LPm-DQ-yml" firstAttribute="leading" secondItem="767-OZ-XIh" secondAttribute="leading" id="T01-ZO-Vzl"/>
+                            <constraint firstItem="767-OZ-XIh" firstAttribute="bottom" secondItem="LPm-DQ-yml" secondAttribute="bottom" id="Zj4-C1-PsM"/>
+                            <constraint firstItem="LPm-DQ-yml" firstAttribute="top" secondItem="767-OZ-XIh" secondAttribute="top" id="gJ7-s0-Fnh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="767-OZ-XIh"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="LPm-DQ-yml" id="doG-xa-feM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Go7-iS-WaX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3615" y="98"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="eGi-Jr-ep9">
+        <scene sceneID="xtP-nS-P08">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahH-Dg-2Tw" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8D4-Pz-mkg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2dc-5P-c1I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wwb-pb-opI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" name="col_app"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="col_app"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
                             <color key="textColor" name="col_titleColor"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zbv-cq-7QA"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fFF-iM-0AI"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aKg-Sx-7Ep" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VPg-zi-1Su" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="99.776785714285708"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="calendar" width="170.5" height="170.5"/>
+        <image name="url" width="170.5" height="170.5"/>
         <namedColor name="col_app">
             <color red="0.0039215686274509803" green="0.59607843137254901" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="col_medium_black">
             <color red="0.13725490196078433" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="col_orange">
+            <color red="0.94117647058823528" green="0.36862745098039218" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="col_titleColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,4 +216,5 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <color key="tintColor" name="col_titleColor"/>
 </document>

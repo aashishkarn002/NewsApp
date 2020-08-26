@@ -141,6 +141,25 @@ extension NewsViewController: UITableViewDataSource {
 }
 //Table View Delegate
 extension NewsViewController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let delegateUnwrapped = newsCellDataSource?[indexPath.section]
+        if delegateUnwrapped?.rawValue == Cells.HeadlineCell.rawValue {
+            let mainStory = UIStoryboard(name: StoryBoardName.Main.rawValue, bundle: nil)
+            let newsDetailVC = mainStory.instantiateViewController(withIdentifier:ViewControllerName.NewsDetailViewController.rawValue) as! NewsDetailViewController
+            newsDetailVC.modalPresentationStyle = .fullScreen
+            newsDetailVC.article = newsListCellViewModel.first?.getRP()
+            self.navigationController?.pushViewController(newsDetailVC, animated: true)
+            
+        }
+        if delegateUnwrapped?.rawValue == Cells.SubHeadlineCell.rawValue {
+            let mainStory = UIStoryboard(name: StoryBoardName.Main.rawValue, bundle: nil)
+            let newsDetailVC = mainStory.instantiateViewController(withIdentifier:ViewControllerName.NewsDetailViewController.rawValue) as! NewsDetailViewController
+            newsDetailVC.modalPresentationStyle = .fullScreen
+            newsDetailVC.article = newsListCellViewModel[indexPath.row + 1].getRP()
+            self.navigationController?.pushViewController(newsDetailVC, animated: true)
+        }
+        
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let delegateUnwrapped = newsCellDataSource?[indexPath.section]
         //Setting height For Header Section

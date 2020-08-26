@@ -16,4 +16,8 @@ extension UIViewController{
     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
     self.present(alert, animated: true, completion: nil)
     }
+    open override func awakeFromNib() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    } 
+   
 }

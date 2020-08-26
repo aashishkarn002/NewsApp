@@ -2,7 +2,7 @@
 //  CircularBorderView.swift
 //  NewsAPP
 //
-//  Created by Cellcom on 8/25/20.
+//  Created by Aashish on 8/25/20.
 //  Copyright © 2020 aashish. All rights reserved.
 //
 
