@@ -85,7 +85,9 @@ extension NewsViewController {
                 }
                 completion()
             case .failure(let error):
-                print(error)
+                DispatchQueue.main.async {
+                    self.showAlertMessage(titleStr: "Message", messageStr: error.localizedDescription)
+                }
                 completion()
             }
         }
