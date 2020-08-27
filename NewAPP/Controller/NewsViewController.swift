@@ -14,10 +14,11 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    var coreDataStack: CoreDataStack!
     //Initialinzing ActivityData for NVActivityIndicatorView to show loading view.
-    let activityData = ActivityData(size: CGSize(width: 50.0, height: 50.0), message: "Loading....", messageFont: UIFont(name: "Montserrat", size: 18), messageSpacing: 10.0, type: .ballSpinFadeLoader, color: .appColor, padding: 10.0, displayTimeThreshold: 8, minimumDisplayTime: 5, backgroundColor: .clear, textColor: .appColor)
+    var nvActivityData:ActivityData!
     private let networkManager: NetworkManager
-    var newsCellDataSource: [NewsCellTypes]?
+    private var newsCellDataSource: [NewsCellTypes]?
     
     //Initializing NewsViewModel
     private var newsListCellViewModel: [NewsViewModel] = [] {
@@ -45,10 +46,10 @@ class NewsViewController: UIViewController {
         self.registerTableViewCells()
         self.tableView.isHidden = true
         //Calling the News API
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.nvActivityData)
         self.getNews {
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-            self.tableView.isHidden = false
+            
         } 
     }
     
@@ -59,7 +60,7 @@ class NewsViewController: UIViewController {
 //UISetup
 extension NewsViewController {
     //Initial Setup Of UI
-    func uiSetup(){
+    private func uiSetup(){
         self.title =  Titles.MainPageTitle.rawValue
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -68,7 +69,7 @@ extension NewsViewController {
         
     }
     //Registering Cell to Table View
-    func registerTableViewCells() {
+    private func registerTableViewCells() {
         tableView.register(UINib(nibName: Cells.HeadlineCell.rawValue, bundle: nil), forCellReuseIdentifier: Cells.HeadlineCellIdentifier.rawValue)
         tableView.register(UINib(nibName: Cells.SubHeadlineCell.rawValue, bundle: nil), forCellReuseIdentifier: Cells.SubHeadlineCellIdentifier.rawValue)
     }
@@ -81,12 +82,20 @@ extension NewsViewController {
             switch result {
             case .success(let article):
                 DispatchQueue.main.async {
-                    self.newsListCellViewModel = article.map({NewsViewModel(from: $0) })
+                    if article.count != 0 {
+                        self.newsListCellViewModel = article.map({NewsViewModel(from: $0) })
+                        self.tableView.isHidden = false
+                    }
+                    else {
+                        self.showAlertMessage(titleStr: "Message", messageStr: "Sorry!! No article found")
+                        self.tableView.isHidden = true
+                    }
                 }
                 completion()
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.showAlertMessage(titleStr: "Message", messageStr: error.localizedDescription)
+                    self.showAlertMessage(titleStr: "Message", messageStr: error.description)
+                    self.tableView.isHidden = true
                 }
                 completion()
             }
@@ -146,16 +155,22 @@ extension NewsViewController:UITableViewDelegate {
         if delegateUnwrapped?.rawValue == Cells.HeadlineCell.rawValue {
             let mainStory = UIStoryboard(name: StoryBoardName.Main.rawValue, bundle: nil)
             let newsDetailVC = mainStory.instantiateViewController(withIdentifier:ViewControllerName.NewsDetailViewController.rawValue) as! NewsDetailViewController
+            newsDetailVC.hidesBottomBarWhenPushed = true
             newsDetailVC.modalPresentationStyle = .fullScreen
             newsDetailVC.article = newsListCellViewModel.first?.getRP()
+            newsDetailVC.coreDataStack = self.coreDataStack
+            newsDetailVC.nvActivityData = self.nvActivityData
             self.navigationController?.pushViewController(newsDetailVC, animated: true)
             
         }
         if delegateUnwrapped?.rawValue == Cells.SubHeadlineCell.rawValue {
             let mainStory = UIStoryboard(name: StoryBoardName.Main.rawValue, bundle: nil)
             let newsDetailVC = mainStory.instantiateViewController(withIdentifier:ViewControllerName.NewsDetailViewController.rawValue) as! NewsDetailViewController
+            newsDetailVC.hidesBottomBarWhenPushed = true
             newsDetailVC.modalPresentationStyle = .fullScreen
             newsDetailVC.article = newsListCellViewModel[indexPath.row + 1].getRP()
+            newsDetailVC.coreDataStack = self.coreDataStack
+            newsDetailVC.nvActivityData = self.nvActivityData
             self.navigationController?.pushViewController(newsDetailVC, animated: true)
         }
         
@@ -180,9 +195,9 @@ extension NewsViewController:UITableViewDelegate {
 //Refresh Control
 extension NewsViewController {
     //Calling News API Again when refresh naviagation bar button clicked.
-    func handleRefresh() {
+    private func handleRefresh() {
         self.newsListCellViewModel.removeAll()
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.nvActivityData)
         self.tableView.isHidden = true
         self.getNews {
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating()

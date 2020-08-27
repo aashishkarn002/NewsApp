@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8D4-Pz-mkg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -16,26 +16,26 @@
         </array>
     </customFonts>
     <scenes>
-        <!--News View Controller-->
+        <!--US News-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NewsViewController" customModule="NewsAPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="NewsViewController" customModule="NewsAPP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Briefing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpm-H1-gQX">
-                                <rect key="frame" x="12" y="93" width="390" height="29.5"/>
+                                <rect key="frame" x="12" y="49" width="390" height="28"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-mY-jLj">
-                                <rect key="frame" x="0.0" y="155.5" width="414" height="706.5"/>
+                                <rect key="frame" x="0.0" y="110" width="414" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="KMd-WO-T96">
-                                <rect key="frame" x="382" y="130.5" width="20" height="20"/>
+                                <rect key="frame" x="382" y="85" width="20" height="20"/>
                                 <color key="tintColor" name="col_app"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6fE-cg-R3t"/>
@@ -43,7 +43,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-09-09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErV-Zv-Y5Z">
-                                <rect key="frame" x="304.5" y="133" width="69.5" height="15"/>
+                                <rect key="frame" x="311" y="88" width="63" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" name="col_medium_black"/>
                                 <nil key="highlightedColor"/>
@@ -65,6 +65,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="US News" image="doc.plaintext" catalog="system" id="BOi-Ta-KbB"/>
                     <navigationItem key="navigationItem" id="tac-HN-kTA">
                         <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="VUA-ta-RMo">
                             <color key="tintColor" name="col_titleColor"/>
@@ -73,6 +74,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateLabel" destination="ErV-Zv-Y5Z" id="UqC-7D-UqT"/>
                         <outlet property="refreshButton" destination="VUA-ta-RMo" id="hWZ-RO-oNQ"/>
@@ -173,32 +175,11 @@
             </objects>
             <point key="canvasLocation" x="3615" y="98"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xtP-nS-P08">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8D4-Pz-mkg" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wwb-pb-opI">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="col_app"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="col_titleColor"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fFF-iM-0AI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VPg-zi-1Su" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="99.776785714285708"/>
-        </scene>
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="calendar" width="170.5" height="170.5"/>
+        <image name="doc.plaintext" catalog="system" width="56" height="64"/>
         <image name="url" width="170.5" height="170.5"/>
         <namedColor name="col_app">
             <color red="0.0039215686274509803" green="0.59607843137254901" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -208,9 +189,6 @@
         </namedColor>
         <namedColor name="col_orange">
             <color red="0.94117647058823528" green="0.36862745098039218" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="col_titleColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="col_titleColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -30,17 +30,8 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline Titile" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bis-Ku-AER">
                                 <rect key="frame" x="8" y="2" width="510" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="tu3-sN-lIL"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
                                 <color key="textColor" name="col_dark_black"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline Description" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yO3-MO-xtF">
-                                <rect key="frame" x="8" y="218" width="510" height="37.5"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
-                                <color key="textColor" name="col_medium_black"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ytb-9g-rxI" customClass="CircularBorderCard" customModule="NewsAPP" customModuleProvider="target">
@@ -70,6 +61,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline Description" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yO3-MO-xtF">
+                                <rect key="frame" x="8" y="218" width="510" height="37.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37.5" id="AMW-BZ-8ow"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                <color key="textColor" name="col_medium_black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFT-N2-YZW">
                                 <rect key="frame" x="8" y="275.5" width="510" height="0.5"/>
                                 <color key="backgroundColor" name="col_light_gray"/>
@@ -80,13 +80,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="LFT-N2-YZW" firstAttribute="top" secondItem="yO3-MO-xtF" secondAttribute="bottom" constant="20" id="2jA-Ux-XA9"/>
                             <constraint firstAttribute="trailing" secondItem="LFT-N2-YZW" secondAttribute="trailing" constant="8" id="3VR-ZS-wYt"/>
                             <constraint firstItem="Bis-Ku-AER" firstAttribute="centerX" secondItem="RsF-kL-6Uq" secondAttribute="centerX" id="9vm-uw-GQr"/>
                             <constraint firstItem="yO3-MO-xtF" firstAttribute="leading" secondItem="RsF-kL-6Uq" secondAttribute="leading" constant="8" id="CN3-mj-8GZ"/>
                             <constraint firstItem="yO3-MO-xtF" firstAttribute="top" secondItem="Ytb-9g-rxI" secondAttribute="bottom" constant="8" id="FQC-PZ-klW"/>
                             <constraint firstAttribute="bottom" secondItem="LFT-N2-YZW" secondAttribute="bottom" id="Glc-WE-DLi"/>
                             <constraint firstItem="Bis-Ku-AER" firstAttribute="leading" secondItem="RsF-kL-6Uq" secondAttribute="leading" constant="8" id="HhV-X9-JFF"/>
+                            <constraint firstItem="LFT-N2-YZW" firstAttribute="top" secondItem="yO3-MO-xtF" secondAttribute="bottom" constant="20" id="IRN-7r-Ryj"/>
                             <constraint firstItem="Ytb-9g-rxI" firstAttribute="centerX" secondItem="RsF-kL-6Uq" secondAttribute="centerX" id="IVF-y3-MDp"/>
                             <constraint firstAttribute="trailing" secondItem="yO3-MO-xtF" secondAttribute="trailing" constant="8" id="JBx-FJ-q1P"/>
                             <constraint firstAttribute="trailing" secondItem="Bis-Ku-AER" secondAttribute="trailing" constant="8" id="Nav-SJ-Bv2"/>
@@ -108,6 +108,8 @@
                     <constraint firstAttribute="trailing" secondItem="RsF-kL-6Uq" secondAttribute="trailing" constant="12" id="EuZ-9Q-YTq"/>
                     <constraint firstItem="RsF-kL-6Uq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Lby-bs-MG8"/>
                     <constraint firstItem="RsF-kL-6Uq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="dM1-v3-NjQ"/>
+                    <constraint firstItem="RsF-kL-6Uq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="e0d-c1-927"/>
+                    <constraint firstItem="RsF-kL-6Uq" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="lEP-0q-Tkp"/>
                     <constraint firstAttribute="bottom" secondItem="RsF-kL-6Uq" secondAttribute="bottom" constant="12" id="nId-Uu-cQu"/>
                 </constraints>
             </tableViewCellContentView>

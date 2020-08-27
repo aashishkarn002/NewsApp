@@ -30,14 +30,20 @@ enum Titles:String {
     case DetailPageTitle = "Detail"
     case FullCoverageWebViewControllerTitle = "Full Coverage"
 }
-enum Segue: String {
-    case NewsDetailVC = "toNewsDetailVC"
+
+enum CoreDataName: String {
+    case ModelName = "NewsAPP"
+    case NewsArticleEntity = "NewsArticle"
 }
 enum StoryBoardName: String {
     case Main = "Main"
+    case BookMark = "BookMark"
+    case HomeTabBar = "TabBar"
 }
 enum ViewControllerName: String {
     case NewsViewController = "NewsViewController"
     case NewsDetailViewController = "NewsDetailViewController"
     case FullCoverageWebViewController = "FullCoverageWebViewController"
+    case BookMarkViewController = "BookMarkViewController"
+    case HomeTabBarViewController = "HomeTabBarViewController"
 }

@@ -43,13 +43,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-3-3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t78-ed-z8e">
-                                        <rect key="frame" x="36" y="9.5" width="60" height="17.5"/>
+                                        <rect key="frame" x="36" y="10" width="58" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" name="col_dark_black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVz-2S-edT">
-                                        <rect key="frame" x="36" y="39.5" width="33" height="17.5"/>
+                                        <rect key="frame" x="36" y="40" width="30.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" name="col_dark_black"/>
                                         <nil key="highlightedColor"/>

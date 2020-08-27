@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
+import CoreData
 class NewsDetailViewController: UIViewController {
     var article: Article?
     var newsCellDataSource: [NewsCellTypes]?
-    
+    var coreDataStack: CoreDataStack!
+    var nvActivityData:ActivityData!
     @IBOutlet weak var linkView: CircularBorderCard!
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,16 +30,18 @@ class NewsDetailViewController: UIViewController {
 //UISetup
 extension NewsDetailViewController {
     //Initial Setup For UI
-    func uISetup(){
+   private  func uISetup(){
         self.title = Titles.DetailPageTitle.rawValue
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.newsCellDataSource = [.NewsDetailHeadlineCell,.NewsDetailSourceAndDateCell,.NewsDetailSourceCell,.NewsDetailImageCell,.NewsDetailDescriptionCell,.NewsDetailContentCell]
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         linkView.addGestureRecognizer(tap)
+    let bookMark = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(self.handleNavigationRightButtonTap(_:)))
+    self.navigationItem.rightBarButtonItem = bookMark
     }
     //Registering Cell to Table View
-    func registerTableViewCells() {
+    private func registerTableViewCells() {
         tableView.register(UINib(nibName: Cells.NewsDetailHeadlineCell.rawValue, bundle: nil), forCellReuseIdentifier: Cells.NewsDetailHeadlineCellIdentifier.rawValue)
         tableView.register(UINib(nibName: Cells.NewsDetailImageCell.rawValue, bundle: nil), forCellReuseIdentifier: Cells.NewsDetailImageCellIdentifier.rawValue)
         tableView.register(UINib(nibName: Cells.NewsDetailSourceAndDateCell.rawValue, bundle: nil), forCellReuseIdentifier: Cells.NewsDetailSourceAndDateCellIdentifier.rawValue)
@@ -128,7 +133,27 @@ extension NewsDetailViewController {
         let mainStory = UIStoryboard(name: StoryBoardName.Main.rawValue, bundle: nil)
         let fullCoverageWebView = mainStory.instantiateViewController(withIdentifier:ViewControllerName.FullCoverageWebViewController.rawValue) as! FullCoverageWebViewController
         fullCoverageWebView.modalPresentationStyle = .fullScreen
+        fullCoverageWebView.nvActivityData = self.nvActivityData
         fullCoverageWebView.url = url
         self.navigationController?.pushViewController(fullCoverageWebView, animated: true)
+    }
+}
+extension NewsDetailViewController {
+    @objc func handleNavigationRightButtonTap(_ sender: UITapGestureRecognizer? = nil) {
+        guard let newsArticeEntity = NSEntityDescription.entity(forEntityName: CoreDataName.NewsArticleEntity.rawValue, in: self.coreDataStack.managedObjectContext) else{
+            return self.showAlertMessage(titleStr: "Message", messageStr: "No entity found with this name.")
+        }
+        
+         let newsArticleCD = NewsArticle(entity: newsArticeEntity, insertInto: self.coreDataStack.managedObjectContext)
+        newsArticleCD.article_title = self.article?.title ?? ""
+        newsArticleCD.article_id = self.article?.source?.id ?? ""
+        newsArticleCD.article_author = self.article?.author ?? ""
+        newsArticleCD.article_name = self.article?.source?.name ?? ""
+        newsArticleCD.article_description = self.article?.articleDescription ?? ""
+        newsArticleCD.article_url = self.article?.url ?? ""
+        newsArticleCD.article_image_url = self.article?.urlToImage ?? ""
+        newsArticleCD.article_published_at = self.article?.publishedAt ?? ""
+        newsArticleCD.article_content = self.article?.content ?? ""
+        self.coreDataStack.saveMainContext()
     }
 }

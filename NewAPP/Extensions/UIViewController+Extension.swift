@@ -9,10 +9,10 @@
 import UIKit
 extension UIViewController{
     
-    // Global Alert
-    // Define Your number of buttons, styles and completion
+    
    func showAlertMessage(titleStr:String, messageStr:String) {
     let alert = UIAlertController(title: titleStr, message: messageStr, preferredStyle: .alert)
+    alert.modalPresentationStyle = .overCurrentContext
     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
     self.present(alert, animated: true, completion: nil)
     }

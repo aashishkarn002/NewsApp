@@ -32,10 +32,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="47"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsr-MO-94Z" customClass="CircularBorderCard" customModule="NewsAPP" customModuleProvider="target">
-                                        <rect key="frame" x="210" y="5" width="40" height="40"/>
+                                        <rect key="frame" x="213" y="5" width="40" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61u-9W-BPj">
-                                                <rect key="frame" x="14" y="10" width="12" height="20"/>
+                                                <rect key="frame" x="14" y="10.5" width="12" height="19"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                                 <color key="textColor" name="col_titleColor"/>
                                                 <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZt-aq-1Kf">
-                                        <rect key="frame" x="258" y="15" width="38" height="20"/>
+                                        <rect key="frame" x="261" y="15.5" width="35" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" name="col_app"/>
                                         <nil key="highlightedColor"/>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--BookMarks-->
+        <scene sceneID="jcJ-Cd-7dm">
+            <objects>
+                <viewController storyboardIdentifier="BookMarkViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BSH-IF-jVL" customClass="BookMarkViewController" customModule="NewsAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oDa-Kf-gh1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ael-yB-dRl">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BSH-IF-jVL" id="Fmc-Kx-LHA"/>
+                                    <outlet property="delegate" destination="BSH-IF-jVL" id="fM5-Eo-X45"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ael-yB-dRl" firstAttribute="leading" secondItem="V2b-gw-aDn" secondAttribute="leading" id="DBk-6E-OvE"/>
+                            <constraint firstItem="V2b-gw-aDn" firstAttribute="trailing" secondItem="ael-yB-dRl" secondAttribute="trailing" id="DdM-a1-jyX"/>
+                            <constraint firstItem="V2b-gw-aDn" firstAttribute="bottom" secondItem="ael-yB-dRl" secondAttribute="bottom" id="VLf-2c-1CO"/>
+                            <constraint firstItem="ael-yB-dRl" firstAttribute="top" secondItem="V2b-gw-aDn" secondAttribute="top" id="XiW-pi-M9n"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V2b-gw-aDn"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="BookMarks" image="book" catalog="system" id="2cx-L3-ZcK"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="ael-yB-dRl" id="Brz-hT-vWn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LcG-k6-lzz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="-22"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="book" catalog="system" width="64" height="50"/>
+    </resources>
+</document>

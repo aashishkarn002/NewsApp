@@ -39,5 +39,18 @@ class SubHeadlineCell: UITableViewCell {
             self.imageView?.alpha = 1.0
         }
     }
+    func bindWithBookMark(viewModel: BookMarkViewModel) {
+        self.subHeadlineSourceLabel.text = (viewModel.name ??  "Not Identified")
+        self.subheadlineDescriptionLabel.text = viewModel.articleDescription
+        self.subHeadlineLabel.text = viewModel.title
+        UIImage.download(from: viewModel.urlToImage ?? "") { (image) in
+            DispatchQueue.main.async {
+                self.subHeadlineImageView?.image = image
+            }
+        }
+        UIView.animate(withDuration: 0.08) {
+            self.imageView?.alpha = 1.0
+        }
+    }
     
 }

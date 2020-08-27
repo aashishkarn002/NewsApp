@@ -14,7 +14,7 @@ class FullCoverageWebViewController: UIViewController {
     var url: String?
     private var webView = WKWebView()
     var urlRequest: URLRequest?
-    let activityData = ActivityData(size: CGSize(width: 50.0, height: 50.0), message: "Loading....", messageFont: UIFont(name: "Montserrat", size: 18), messageSpacing: 10.0, type: .ballSpinFadeLoader, color: .appColor, padding: 10.0, displayTimeThreshold: 8, minimumDisplayTime: 5, backgroundColor: .clear, textColor: .appColor)
+    var nvActivityData:ActivityData!
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -33,11 +33,11 @@ class FullCoverageWebViewController: UIViewController {
        }
 }
 extension FullCoverageWebViewController {
-    func uISetup(){
+   private func uISetup(){
         self.title = Titles.FullCoverageWebViewControllerTitle.rawValue
     }
-    func setupForWebiew() {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+    private func setupForWebiew() {
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.nvActivityData)
         contentView.addSubview(webView)
         webView.uiDelegate = self
         webView.navigationDelegate = self
@@ -56,7 +56,7 @@ extension FullCoverageWebViewController: WKUIDelegate,WKNavigationDelegate {
         NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.activityData)
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(self.nvActivityData)
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()

@@ -43,7 +43,22 @@ public class APIClient: NSObject {
                 return
             }
             if let data = dataResponse.data {
-                completion(.success(data))
+                
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    guard let status = json?["status"] as? String else  {
+                        return completion(.failure(APIError.message("No status found for given end point.")))
+                    }
+                    if status.lowercased() == "ok" {
+                        completion(.success(data))
+                    }
+                    else {
+                        completion(.failure(APIError.message(json?["message"] as? String  ?? "Something went wrong!! Please try again")))
+                    }
+                }
+                catch {
+                    return completion(.failure(APIError.message(APIError.decoding.description)))
+                }
             }
         }
     }
@@ -59,7 +74,7 @@ public class APIClient: NSObject {
         }
         
         let params = parameters ?? nil
-       let headers : HTTPHeaders = [
+        let headers : HTTPHeaders = [
             "Authorization": accessToken ?? "",
             "Content-Type" : "application/x-www-form-urlencoded"
         ]
