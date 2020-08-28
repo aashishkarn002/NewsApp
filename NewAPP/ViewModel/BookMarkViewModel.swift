@@ -24,7 +24,7 @@ struct BookMarkViewModel {
         self.data = rp
         self.author = rp.article_author ?? ""
         self.title = rp.article_title
-        self.articleDescription = (rp.article_description == "" || rp.article_description == nil) ? rp.article_content : rp.article_description
+        self.articleDescription = rp.article_description ?? ""
         self.url = rp.article_url ?? ""
         self.urlToImage = rp.article_image_url ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFc_0xCXZmKFNoEY2bSPtX7jNKrGWXKbx-Bw&usqp=CAU"
         self.publishedAt = rp.article_published_at?.formatAPIDateTimeString("dd MMM,yyyy") ?? ""

@@ -21,8 +21,45 @@ class CoreDataStack: NSObject {
             }
         }
     }
-    func deleteAllFromCoreData(_ entity:String,completion: @escaping () -> () ) {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity)
+    func saveNews(article: Article,completion: (_ complete: Bool) -> ()) {
+        guard let newsArticeEntity = NSEntityDescription.entity(forEntityName: CoreDataName.NewsArticleEntity.rawValue, in: self.managedObjectContext) else{
+            return completion(false)
+            
+        }
+        let newsArticleCD = NewsArticle(entity: newsArticeEntity, insertInto: self.managedObjectContext)
+        newsArticleCD.article_title = article.title ?? ""
+        newsArticleCD.article_id = article.source?.id ?? ""
+        newsArticleCD.article_author = article.author ?? ""
+        newsArticleCD.article_name = article.source?.name ?? ""
+        newsArticleCD.article_description = article.articleDescription ?? ""
+        newsArticleCD.article_url = article.url ?? ""
+        newsArticleCD.article_image_url = article.urlToImage ?? ""
+        newsArticleCD.article_published_at = article.publishedAt ?? ""
+        newsArticleCD.article_content = article.content ?? ""
+        self.saveMainContext()
+        completion(true)
+    }
+    func saveNewsArticle(newsArticle: NewsArticle,completion: (_ complete: Bool) -> ()) {
+        guard let newsArticeEntity = NSEntityDescription.entity(forEntityName: CoreDataName.NewsArticleEntity.rawValue, in: self.managedObjectContext) else{
+            return completion(false)
+            
+        }
+        let newsArticleCD = NewsArticle(entity: newsArticeEntity, insertInto: self.managedObjectContext)
+        newsArticleCD.article_title = newsArticle.article_title ?? ""
+        newsArticleCD.article_id = newsArticle.article_id ?? ""
+        newsArticleCD.article_author = newsArticle.article_author ?? ""
+        newsArticleCD.article_name = newsArticle.article_name ?? ""
+        newsArticleCD.article_description = newsArticle.article_description ?? ""
+        newsArticleCD.article_url = newsArticle.article_url ?? ""
+        newsArticleCD.article_image_url = newsArticle.article_image_url ?? ""
+        newsArticleCD.article_published_at = newsArticle.article_published_at ?? ""
+        newsArticleCD.article_content = newsArticle.article_content ?? ""
+        self.saveMainContext()
+        completion(true)
+    }
+    
+    func deleteAllFromCoreData(completion: (_ complete: Bool) -> ()) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataName.NewsArticleEntity.rawValue)
         
         do {
             let tasks = try managedObjectContext.fetch(fetchRequest)
@@ -35,16 +72,29 @@ class CoreDataStack: NSObject {
                 print("Could not save. \(error), \(error.userInfo)")
             }
             
-            completion()
+            completion(true)
         }
         catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
-            completion()
+            completion(false)
         }
     }
-    func deleteObjectFromCoreData(_ entity:String,sourceName:String,authorName:String,completion: @escaping () -> () ) {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity)
-        let predicate = NSPredicate(format: "name CONTAINS[c] %@ OR author CONTAINS[c] %@",sourceName,authorName)
+    func checkObjectAlreadySaved(sourceName:String,author:String,completion: (_ complete: Bool) -> ()) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataName.NewsArticleEntity.rawValue)
+        let predicate = NSPredicate(format: "article_name CONTAINS[c] %@ OR article_author CONTAINS[c] %@",sourceName,author)
+        fetchRequest.predicate = predicate
+        if let articleResult = try? managedObjectContext.fetch(fetchRequest) as? [NewsArticle] {
+            if articleResult.count == 0 {
+                completion(false)
+            }
+            else {
+                completion(true)
+            }
+        }
+    }
+    func deleteObjectFromCoreData(sourceName:String,author:String,completion: (_ complete: Bool) -> ()) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataName.NewsArticleEntity.rawValue)
+        let predicate = NSPredicate(format: "article_name CONTAINS[c] %@ OR article_author CONTAINS[c] %@",sourceName,author)
         fetchRequest.predicate = predicate
         
         do {
@@ -58,11 +108,11 @@ class CoreDataStack: NSObject {
                 print("Could not save. \(error), \(error.userInfo)")
             }
             
-            completion()
+            completion(true)
         }
         catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
-            completion()
+            completion(false)
         }
     }
     

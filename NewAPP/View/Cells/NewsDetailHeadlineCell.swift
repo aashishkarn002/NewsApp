@@ -24,5 +24,8 @@ class NewsDetailHeadlineCell: UITableViewCell {
     func bind(article: Article) {
           self.newsDetailHeadlineLabel.text = article.title
     }
+    func bindWithNewsArticle(article: NewsArticle) {
+          self.newsDetailHeadlineLabel.text = article.article_title
+    }
     
 }

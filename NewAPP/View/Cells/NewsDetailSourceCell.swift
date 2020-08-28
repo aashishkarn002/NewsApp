@@ -24,5 +24,9 @@ class NewsDetailSourceCell: UITableViewCell {
         self.sourceLabel.text = article.source?.name ?? "N/A"
         self.sourceShortLabel.text = article.source?.name?.first?.description ?? "N/A"
     }
+    func bindWithNewsArticle(article: NewsArticle) {
+        self.sourceLabel.text = article.article_name ?? "N/A"
+        self.sourceShortLabel.text = article.article_name?.first?.description ?? "N/A"
+    }
     
 }

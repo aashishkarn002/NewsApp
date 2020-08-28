@@ -22,7 +22,10 @@ class NewsDetailDescriptionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func bind(article: Article) {
-        self.newsdetailDescriptionLabel.text = article.articleDescription ?? "N/A"
+        self.newsdetailDescriptionLabel.text = article.articleDescription ?? ""
+    }
+    func bindWithNewsArticle(article: NewsArticle) {
+        self.newsdetailDescriptionLabel.text = article.article_description ?? ""
     }
     
 }

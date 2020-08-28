@@ -31,5 +31,15 @@ class NewsDetailImageCell: UITableViewCell {
             self.imageView?.alpha = 1.0
         }
     }
+    func bindWithNewsArticle(article: NewsArticle) {
+        UIImage.download(from: article.article_image_url ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSFc_0xCXZmKFNoEY2bSPtX7jNKrGWXKbx-Bw&usqp=CAU") { (image) in
+            DispatchQueue.main.async {
+                self.newsDetailImageView?.image = image
+            }
+        }
+        UIView.animate(withDuration: 0.08) {
+            self.imageView?.alpha = 1.0
+        }
+    }
     
 }

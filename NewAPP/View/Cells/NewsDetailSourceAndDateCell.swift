@@ -26,5 +26,9 @@ class NewsDetailSourceAndDateCell: UITableViewCell {
         self.newsDetailTimeLabel.text = Date().timeInterval(timeAgo: article.publishedAt ?? "")
         self.newsDetailDateLabel.text = article.publishedAt?.formatAPIDateTimeString("dd MMM,yyyy") ?? "N/A"
     }
+    func bindWithNewsArticle(article: NewsArticle) {
+        self.newsDetailTimeLabel.text = Date().timeInterval(timeAgo: article.article_published_at ?? "")
+        self.newsDetailDateLabel.text = article.article_published_at?.formatAPIDateTimeString("dd MMM,yyyy") ?? "N/A"
+    }
     
 }
