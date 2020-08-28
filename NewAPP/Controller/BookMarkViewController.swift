@@ -66,7 +66,9 @@ extension BookMarkViewController {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CoreDataName.NewsArticleEntity.rawValue)
         if let articleResult = try? coreDataStack.managedObjectContext.fetch(fetchRequest) as? [NewsArticle] {
             if articleResult.count == 0 {
+                 self.bookMarkListCellViewModel.removeAll()
                 self.tabBarController?.showAlertControllerMessage(titleStr: "Message", messageStr: "No Bookmarks Saved yet!!")
+               
                 completion(false)
             }
             else {
